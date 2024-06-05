@@ -8,11 +8,9 @@ public class NavigationTest extends BaseTest {
 
     @Test
     public void testOpenBaseURL() {
-        setup();
 
         final String expectedURL = "https://magento.softwaretestingboard.com/";
         final String expectedTitle = "Home Page";
-
 
         getDriver().get("https://magento.softwaretestingboard.com");
         final String actualURL = getDriver().getCurrentUrl();
@@ -20,7 +18,5 @@ public class NavigationTest extends BaseTest {
 
         Assert.assertEquals(actualURL, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
-
-        tearDown();
     }
 }
