@@ -1,5 +1,3 @@
-package com.lumatest;
-
 import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
