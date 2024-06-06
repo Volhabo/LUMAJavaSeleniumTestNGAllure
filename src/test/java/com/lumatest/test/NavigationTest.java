@@ -1,22 +1,33 @@
 package com.lumatest.test;
 
 import com.lumatest.base.BaseTest;
+import com.lumatest.data.TestData;
+import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class NavigationTest extends BaseTest {
 
-    @Test
+    @Test(description = "TC-01 Open Base URL")
+    @Story("Navigation")
+    @Severity(SeverityLevel.BLOCKER)
+    @Description("TC-01 Open Base URL")
+    @Link(TestData.BASE_URL)
     public void testOpenBaseURL() {
+        Allure.step("SetUp expected results");
+        final String expectedURL = TestData.BASE_URL + "/";
+        final String expectedTitle = TestData.BASE_URL_TITLE;
 
-        final String expectedURL = "https://magento.softwaretestingboard.com/";
-        final String expectedTitle = "Home Page";
+        Allure.step("Open BaseURL");
+        getDriver().get(TestData.BASE_URL);
 
-        getDriver().get("https://magento.softwaretestingboard.com");
+        Allure.step("Collect actualURL, actualTitle");
         final String actualURL = getDriver().getCurrentUrl();
         final String actualTitle = getDriver().getTitle();
 
+        Allure.step("Verify actualURL as expected");
         Assert.assertEquals(actualURL, expectedURL);
+        Allure.step("Verify actualTitle as expected");
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 }
