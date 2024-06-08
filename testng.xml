@@ -7,6 +7,12 @@
             <class name="com.lumatest.test.NavigationTest"></class>
         </classes>
     </test>
+    <test name = "ChromiumTest" verbose="2" preserve-order="true">
+        <parameter name="browser" value="chromium" />
+        <classes>
+            <class name="com.lumatest.test.NavigationTest"></class>
+        </classes>
+    </test>
 </suite>
 
 
