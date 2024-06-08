@@ -10,10 +10,12 @@ import org.testng.annotations.*;
 public abstract class BaseTest {
     private WebDriver driver;
     private final String browser = "chrome";
+//    private final String browser = "firefox";
 
     @BeforeSuite
     protected void setupWebDriverManager() {
         WebDriverManager.chromedriver().setup();
+        WebDriverManager.firefoxdriver().setup();
     }
 
     @BeforeMethod
@@ -47,9 +49,3 @@ public abstract class BaseTest {
     }
 }
 
-
-//    private void createChromeDriver() {
-//        if (this.driver == null) {
-//            this.driver = new ChromeDriver();
-//        }
-//    }
