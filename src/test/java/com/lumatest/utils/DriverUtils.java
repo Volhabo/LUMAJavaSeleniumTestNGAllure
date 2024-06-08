@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Reporter;
 
 import java.util.Map;
 
@@ -24,17 +25,30 @@ public class DriverUtils {
         chromeOptions.addArguments("--ignore-certificate-errors");
     }
 
-    public static WebDriver createChromeDriver(WebDriver driver) {
+    private static WebDriver createChromeDriver(WebDriver driver) {
         if (driver != null) {
             driver.quit();
+
+            return driver;
         }
         ChromeDriver chromeDriver = new ChromeDriver(chromeOptions);
         chromeDriver.executeCdpCommand("Network.enable", Map.of());
         chromeDriver.executeCdpCommand("Network.setExtraHTTPHeaders", Map.of("headers", Map.of("accept-language", "en-US,en;q=0.9")));
 
         return chromeDriver;
+    }
+
+    public static WebDriver createDriver(String browser, WebDriver driver) {
+        if(browser.equals("chrome")){
+            driver = DriverUtils.createChromeDriver(driver);
+
+            return driver;
+        } else {
+
+            return null;
         }
     }
+}
 //    public static WebDriver createChromeDriver(WebDriver driver) {
 //        if (driver == null) {
 //            return new ChromeDriver(chromeOptions);
@@ -54,4 +68,4 @@ public class DriverUtils {
 //
 //        return driver;
 //    }
-//}
+
