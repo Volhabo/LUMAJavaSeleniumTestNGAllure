@@ -3,6 +3,8 @@ package com.lumatest.utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.chromium.ChromiumDriver;
+import org.openqa.selenium.chromium.ChromiumOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.Reporter;
@@ -12,6 +14,7 @@ import java.util.Map;
 public class DriverUtils {
     private static ChromeOptions chromeOptions;
     private static FirefoxOptions firefoxOptions;
+//    private static ChromiumOptions<ChromeOptions> chromiumOptions;
 
     static {
         chromeOptions = new ChromeOptions();
@@ -37,19 +40,8 @@ public class DriverUtils {
         firefoxOptions.addArguments("--disable-web-security");
         firefoxOptions.addArguments("--allow-running-insecure-content");
         firefoxOptions.addArguments("--ignore-certificate-errors");
-    }
 
-    private static WebDriver createFirefoxDriver(WebDriver driver) {
-        if (driver != null) {
-            driver.quit();
-
-            return driver;
-        }
-        FirefoxDriver firefoxDriver = new FirefoxDriver(firefoxOptions);
-        // firefoxDriver.executeCdpCommand("Network.enable", Map.of());
-        // firefoxDriver.executeCdpCommand("Network.setExtraHTTPHeaders", Map.of("headers", Map.of("accept-language", "en-US,en;q=0.9")));
-
-        return firefoxDriver;
+//        chromiumOptions = chromeOptions;
     }
 
     private static WebDriver createChromeDriver(WebDriver driver) {
@@ -65,6 +57,18 @@ public class DriverUtils {
         return chromeDriver;
     }
 
+    private static WebDriver createFirefoxDriver(WebDriver driver) {
+        if (driver != null) {
+            driver.quit();
+
+            return driver;
+        }
+        FirefoxDriver firefoxDriver = new FirefoxDriver(firefoxOptions);
+        // firefoxDriver.executeCdpCommand("Network.enable", Map.of());
+        // firefoxDriver.executeCdpCommand("Network.setExtraHTTPHeaders", Map.of("headers", Map.of("accept-language", "en-US,en;q=0.9")));
+
+        return firefoxDriver;
+    }
 
     public static WebDriver createDriver(String browser, WebDriver driver) {
         switch (browser) {
@@ -74,36 +78,12 @@ public class DriverUtils {
             case "firefox" -> {
                 return createFirefoxDriver(driver);
             }
+            case "chromium" -> {
+                return createChromeDriver(driver);
+            }
             default -> {
                 return null;
             }
         }
     }
 }
-//    public static WebDriver createChromeDriver(WebDriver driver) {
-//        if (driver == null) {
-//            return new ChromeDriver(chromeOptions);
-//        } else {
-//            driver.quit();
-//            return new ChromeDriver(chromeOptions);
-//        }
-//    }
-
-//    private WebDriver createFireFoxDriver(WebDriver driver) {
-//        if (driver == null) {
-//            driver = new FirefoxDriver();
-//        } else {
-//            driver.quit();
-//            driver = new FirefoxDriver();
-//        }
-//
-//        return driver;
-//    }
-
-
-//    private void createChromeDriver() {
-//        if (this.driver == null) {
-//            this.driver = new ChromeDriver();
-//        }
-
-//    }
