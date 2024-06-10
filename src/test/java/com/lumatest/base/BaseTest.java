@@ -10,14 +10,13 @@ import org.testng.Reporter;
 import org.testng.annotations.*;
 
 public abstract class BaseTest {
-//    public static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<>();
     private WebDriver driver;
 //    private final String browser = "chromium";  //    private final String browser = "firefox";
 
     @BeforeSuite
     protected void setupWebDriverManager() {
         WebDriverManager.chromedriver().setup();
-//        WebDriverManager.firefoxdriver().setup();
+        WebDriverManager.firefoxdriver().setup();
         WebDriverManager.chromiumdriver().setup();
     }
 
