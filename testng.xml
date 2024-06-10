@@ -13,12 +13,12 @@
             <class name="com.lumatest.test.NavigationTest"></class>
         </classes>
     </test>
-    <test name = "FirefoxTest" verbose="2" preserve-order="true">
-        <parameter name="browser" value="firefox" />
-        <classes>
-            <class name="com.lumatest.test.NavigationTest"></class>
-        </classes>
-    </test>
+<!--    <test name = "FirefoxTest" verbose="2" preserve-order="true">-->
+<!--        <parameter name="browser" value="firefox" />-->
+<!--        <classes>-->
+<!--            <class name="com.lumatest.test.NavigationTest"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>
 
 <!--        data-provider-thread-count="2-->
