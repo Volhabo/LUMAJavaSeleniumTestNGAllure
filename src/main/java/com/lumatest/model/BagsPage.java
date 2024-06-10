@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class BagsPage extends SideMenu{
+public class BagsPage extends SideMenu {
 
     private final String productNameXpath = "//img[@alt='";
     private WebElement drivenBagpackImg;
@@ -15,7 +15,7 @@ public class BagsPage extends SideMenu{
         super(driver);
     }
 
-    @Step("Click {productName} Img.")
+    @Step("Click + \'productName\' Img.")
     public ProductPage clickDrivenBagpackImg(String productName) {
         String imgXpath = productNameXpath + productName + "']";
         getDriver().findElement(By.xpath(imgXpath)).click();
