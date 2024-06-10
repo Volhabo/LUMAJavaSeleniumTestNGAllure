@@ -22,7 +22,7 @@ public abstract class BaseTest {
 
    @Parameters("browser")
     @BeforeMethod
-    protected void setupDriver(String browser) {
+    protected void setupDriver(@Optional("chrome") String browser) {
         Reporter.log("------------------------------------------------------------------------", true);
         this.driver = DriverUtils.createDriver(browser, this.driver);
 
@@ -37,7 +37,7 @@ public abstract class BaseTest {
 
     @Parameters("browser")
     @AfterMethod(alwaysRun = true)
-    protected void tearDown(String browser) {
+    protected void tearDown(@Optional("chrome") String browser) {
         if (this.driver != null) {
             getDriver().quit();
             Reporter.log("INFO: " + browser.toUpperCase() +  " driver closed.", true);
