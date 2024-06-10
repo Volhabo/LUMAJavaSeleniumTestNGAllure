@@ -24,10 +24,10 @@ public class ProductPageTest extends BaseTest {
         final String breadCrumbsMenuText = productPage.getBreadCrumbsMenuText();
         System.out.println(breadCrumbsMenuText);
 
-        Allure.step("Verify actual " + productName + " equals " + TestData.DRIVEN_BAGPACK_PRODUCT_NAME);
+        Allure.step("Verify actual " + "'" + productName +"'" + " equals " + "'" + TestData.DRIVEN_BAGPACK_PRODUCT_NAME + "'");
         Assert.assertEquals(productName, TestData.DRIVEN_BAGPACK_PRODUCT_NAME);
 
-        Allure.step("Verify actual " + breadCrumbsMenuText + " equals " +TestData.DRIVEN_BAGPACK_PRODUCT_PAGE_BREADCRUMPS_MENU_TEXT);
+        Allure.step("Verify actual " + "'" +  breadCrumbsMenuText + "'" +  " equals " + "'" + TestData.DRIVEN_BAGPACK_PRODUCT_PAGE_BREADCRUMPS_MENU_TEXT + "'");
         Assert.assertEquals(breadCrumbsMenuText, TestData.DRIVEN_BAGPACK_PRODUCT_PAGE_BREADCRUMPS_MENU_TEXT);
     }
 }
