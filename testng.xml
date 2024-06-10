@@ -5,12 +5,14 @@
         <parameter name="browser" value="chrome" />
         <classes>
             <class name="com.lumatest.test.NavigationTest"></class>
+            <class name="com.lumatest.test.ProductPageTest"></class>
         </classes>
     </test>
     <test name = "ChromiumTest" verbose="2" preserve-order="true">
         <parameter name="browser" value="chromium" />
         <classes>
             <class name="com.lumatest.test.NavigationTest"></class>
+            <class name="com.lumatest.test.ProductPageTest"></class>
         </classes>
     </test>
 <!--    <test name = "FirefoxTest" verbose="2" preserve-order="true">-->
