@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="CrossBrowser Test Suite" thread-count="2" data-provider-thread-count="2">
+<suite name="CrossBrowser Test Suite" parallel="tests" thread-count="2" data-provider-thread-count="2">
     <test name = "ChromeTest" verbose="2" preserve-order="true">
         <parameter name="browser" value="chrome" />
         <classes>
@@ -13,9 +13,15 @@
             <class name="com.lumatest.test.NavigationTest"></class>
         </classes>
     </test>
+<!--    <test name = "FirefoxTest" verbose="2" preserve-order="true">-->
+<!--        <parameter name="browser" value="firefox" />-->
+<!--        <classes>-->
+<!--            <class name="com.lumatest.test.NavigationTest"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>
 
-
+<!--        data-provider-thread-count="2-->
 <!--parallel="methods"-->
 <!--com.lumatest.test.NavigationTest-->
 <!--src/test/java/com/lumatest/test/NavigationTest.java-->
