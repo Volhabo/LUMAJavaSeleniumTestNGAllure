@@ -58,14 +58,9 @@ public class DriverUtils {
     private static WebDriver createFirefoxDriver(WebDriver driver) {
         if (driver != null) {
             driver.quit();
-
-            return driver;
         }
-        FirefoxDriver firefoxDriver = new FirefoxDriver(firefoxOptions);
-        // firefoxDriver.executeCdpCommand("Network.enable", Map.of());
-        // firefoxDriver.executeCdpCommand("Network.setExtraHTTPHeaders", Map.of("headers", Map.of("accept-language", "en-US,en;q=0.9")));
 
-        return firefoxDriver;
+        return new FirefoxDriver(firefoxOptions);
     }
 
     private static WebDriver createChromiumDriver(WebDriver driver) {
