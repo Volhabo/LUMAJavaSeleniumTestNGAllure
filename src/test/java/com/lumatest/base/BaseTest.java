@@ -1,10 +1,9 @@
 package com.lumatest.base;
 
 import com.lumatest.utils.DriverUtils;
+import com.lumatest.utils.ReportUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.Reporter;
@@ -17,15 +16,13 @@ public abstract class BaseTest {
     @BeforeSuite
     protected void setupWebDriverManager() {
         WebDriverManager.chromedriver().setup();
-//        WebDriverManager.firefoxdriver().setup();
-//        WebDriverManager.chromiumdriver().setup();
+        WebDriverManager.firefoxdriver().setup();
     }
 
     @Parameters("browser")
     @BeforeMethod
     protected void setupDriver(@Optional("chrome") String browser, ITestContext context, ITestResult result) {
         Reporter.log("------------------------------------------------------------------------", true);
-//        Reporter.log("RUN "  + result.getMethod().getMethodName(), true);
         this.driver = DriverUtils.createDriver(browser, this.driver);
         this.threadLocalDriver.set(driver);
 
@@ -45,7 +42,8 @@ public abstract class BaseTest {
     @Parameters("browser")
     @AfterMethod(alwaysRun = true)
     protected void tearDown(@Optional("chrome") String browser, ITestResult result) {
-        Reporter.log(result.getMethod().getMethodName() + ": " + result.getStatus(), true);
+        Reporter.log(result.getMethod().getMethodName() + ": " + ReportUtils.getTestStatus(result),
+                true);
 
         if (getDriver() != null) {
             getDriver().quit();
@@ -61,9 +59,7 @@ public abstract class BaseTest {
         }
     }
 
-    public WebDriver getDriver() {
-
-        return this.driver;
+    protected WebDriver getDriver() {
+        return threadLocalDriver.get();
     }
 }
-

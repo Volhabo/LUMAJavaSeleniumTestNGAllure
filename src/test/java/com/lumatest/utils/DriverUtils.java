@@ -66,12 +66,12 @@ public class DriverUtils {
     private static WebDriver createChromiumDriver(WebDriver driver) {
         if (driver != null) {
             driver.quit();
-
-            return driver;
         }
-        ChromeDriver chromeDriver = new ChromeDriver(chromeOptions);
+        ChromeDriver chromeDriver = new ChromeDriver((ChromeOptions) chromiumOptions);
         chromeDriver.executeCdpCommand("Network.enable", Map.of());
-        chromeDriver.executeCdpCommand("Network.setExtraHTTPHeaders", Map.of("headers", Map.of("accept-language", "en-US,en;q=0.9")));
+        chromeDriver.executeCdpCommand(
+                "Network.setExtraHTTPHeaders", Map.of("headers", Map.of("accept-language", "en-US,en;q=0.9"))
+        );
 
         return chromeDriver;
     }
