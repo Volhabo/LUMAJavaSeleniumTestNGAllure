@@ -44,6 +44,7 @@ public class TestData {
     }
 
     //ProductPage
+    public static final String DRIVEN_BACKPACK_PRODUCT_URL = BASE_URL + "/driven-backpack.html";
     public static final String DRIVEN_BAGPACK_PRODUCT_NAME= "Driven Backpack";
     public static final String DRIVEN_BAGPACK_PRODUCT_PAGE_BREADCRUMPS_MENU_TEXT = "Home Gear Bags Driven Backpack";
 }
